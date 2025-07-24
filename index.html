@@ -118,6 +118,12 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+
+    <div class="has-text-centered">
+    <img src="./static/images/intro.png" alt="Neural DAE architecture" style="max-width: 80%; height: auto;" />
+    <p><em>Figure: Schematic of the proposed operator splitting-based DAE Timestepper.</em></p>
+  </div>
+
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -178,11 +184,6 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
       We propose a modular neural DAE learning framework that decomposes the DAE system into two components:
       a neural surrogate for the algebraic solver, and a physics-constrained (gray-box) neural ordinary differential equation (ODE) model.
       The algebraic states are updated using a trainable neural network, while the differential states evolve via an ODE solver applied to a structured ODE.
-
-            <div class="has-text-centered">
-    <img src="./static/images/intro.png" alt="Neural DAE architecture" style="max-width: 80%; height: auto;" />
-    <p><em>Figure: Schematic of the proposed operator splitting-based DAE Timestepper.</em></p>
-  </div>
 
       <br>
       The proposed operator splitting strategy is inspired by fractional-step numerical integration and is defined as:
