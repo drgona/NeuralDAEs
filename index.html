@@ -136,7 +136,9 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
       <div class="column is-full-width">
         <h2 class="title is-3">Problem Formulation</h2>
         <div class="content has-text-justified">
-
+Differential-Algebraic Equations (DAEs) model dynamical systems governed by both differential dynamics and algebraic constraints—common in physical domains with conservation laws or implicit relationships.
+          Traditional neural ODE models fail to capture these algebraic structures, motivating the need for neural architectures that can learn both explicit and implicit dynamics.
+          The goal is to develop a data-driven framework for learning unknown or partially known DAE components from time-series data while maintaining consistency with the system’s inherent physical constraints.
 
         </div>
       </div>
@@ -144,12 +146,33 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
     <!--/ Problem Formulation -->
 
 
-                <!-- Method -->
+      <!-- Method -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Method</h2>
         <div class="content has-text-justified">
+We propose a modular neural DAE learning framework that decomposes the DAE system into two operator-split components:
+          a neural surrogate for the algebraic solver and a physics-constrained (gray-box) neural ordinary differential equation model.
+          The algebraic states are updated using a trainable neural network, while the differential states evolve via an ODE solver (e.g., explicit Runge-Kutta) applied to a structured ODE.
+          This operator splitting strategy mirrors fractional-step numerical integration and is implemented using the Neuromancer Scientific Machine Learning library,
+          enabling end-to-end training with constraint-aware loss functions.
 
+        </div>
+      </div>
+    </div>
+    <!--/ Method -->
+
+
+      <!-- Method -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Examples</h2>
+        <div class="content has-text-justified">
+        We demonstrate the framework on two realistic case studies.
+          First, the inverse modeling of a two-tank manifold system, where mass flows are implicitly constrained by a neural algebraic relationship.
+          Second, we consider model discrepancy learning in a network of pumps, pipes, and tanks with hybrid physical-learned structure.
+          The proposed method shows strong performance in noisy conditions and exhibits good extrapolation to untrained operating regimes,
+          highlighting its utility for learning hybrid physics-based models in scientific domains.
 
         </div>
       </div>
@@ -194,8 +217,8 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
             This website is licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
-           The website was created based on the <a
-              href="https://github.com/nerfies/nerfies.github.io">nerfies template</a>.
+           Website based on <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies template</a>.
           </p>
         </div>
       </div>
