@@ -224,24 +224,59 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
 <!--/ Method -->
 
 
-      <!-- Examples -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Examples</h2>
-        <div class="content has-text-justified">
-        We demonstrate the framework on two realistic case studies.
-          First, the inverse modeling of a two-tank manifold system, where mass flows are implicitly constrained by a neural algebraic relationship.
-          Second, we consider model discrepancy learning in a network of pumps, pipes, and tanks with hybrid physical-learned structure.
-          The proposed method shows strong performance in noisy conditions and exhibits good extrapolation to untrained operating regimes,
-          highlighting its utility for learning hybrid physics-based models in scientific domains.
-          All our examples are implemented using the <a href="https://github.com/pnnl/neuromancer" target="_blank">Neuromancer library</a>.
 
+<!-- Examples -->
+<div class="columns">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Examples</h2>
+    <div class="content has-text-justified">
+      Our  Neural DAE framework and all our examples are implemented using the <a href="https://github.com/pnnl/neuromancer" target="_blank">Neuromancer library</a>.
 
-        </div>
+     Let's consider tank-manifold-pump system governed by differential-algebraic equations.
+      The goal is to learn the nonlinear area-height profile of a tank, and the implicit flow splitting rule at a manifold junction,
+      only from observed time series of tank heights and input flow rates.
+
+      <br><br>
+      The full DAE system is given by:
+      <div style="text-align: center;">
+        $$
+        \begin{aligned}
+        \frac{dx_1}{dt} &= \frac{y_1}{3}, \\
+        \frac{dx_2}{dt} &= \frac{y_2}{\sqrt{x_2} + 0.1}, \\
+        0 &= u - y_1 - y_2, \\
+        0 &= x_1 - x_2,
+        \end{aligned}
+        $$
       </div>
-    </div>
-    <!--/ Examples -->
+      <br>
+      where \(x_1, x_2\) are the tank heights and \(y_1, y_2\) are the outlet flows.
+      The model enforces mass conservation and equal pressure heads through algebraic constraints,
+      while learning \(\phi_2(x_2) = \sqrt{x_2} + 0.1\) using a neural network.
 
+      <div class="has-text-centered">
+        <img src="./static/images/manifold.png" alt="Tank-manifold schematic" style="max-width: 80%; height: auto;"/>
+        <p><em>Figure: Schematic of tank-manifold-pump system.</em></p>
+      </div>
+      <br>
+
+      The learned model accurately reconstructs the tank heights and flow rates under both training and extrapolation conditions.
+
+      <div class="has-text-centered">
+        <img src="./static/images/tanks_flows_90.png" alt="Simulation results" style="max-width: 90%; height: auto;"/>
+        <p><em>Figure: (a) Tank heights and (b) flow rates during training trajectory.</em></p>
+      </div>
+
+      <div class="has-text-centered">
+        <img src="./static/images/extrap_HeightAreas_flows_90.png" alt="Extrapolation results" style="max-width: 90%; height: auto;"/>
+        <p><em>Figure: Extrapolation of learned area-height relationship and resulting flow trajectories under unseen input.</em></p>
+      </div>
+   <br>
+
+      The model demonstrates the ability to learn interpretable component dynamics while satisfying algebraic constraints and to generalize beyond the training regime.
+    </div>
+  </div>
+</div>
+<!--/ Examples -->
 
 
 
