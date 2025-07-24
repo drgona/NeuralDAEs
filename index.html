@@ -236,7 +236,7 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
      Let's consider tank-manifold-pump system governed by differential-algebraic equations.
       The goal is to learn the nonlinear area-height profile of a tank, and the implicit flow splitting rule at a manifold junction,
       only from observed time series of tank heights and input flow rates.
-      
+
       <br>
     <a target="_blank" href="https://colab.research.google.com/github/pnnl/NeuralDAEs/blob/master/training/tank_dae_example.ipynb">
       <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" style="height: 30px;"/>
@@ -268,15 +268,15 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
       <br>
 
       The learned model accurately reconstructs the tank heights and flow rates under both training and extrapolation conditions.
-
+  <br>
       <div class="has-text-centered">
         <img src="./static/images/tanks_flows_90.png" alt="Simulation results" style="max-width: 90%; height: auto;"/>
-        <p><em>Figure: (a) Tank heights and (b) flow rates during training trajectory.</em></p>
+        <p><em>Figure: (a) Tank heights and (b) flow rates during training trajectory with constant inflow through the manifold.</em></p>
       </div>
 
       <div class="has-text-centered">
         <img src="./static/images/extrap_HeightAreas_flows_90.png" alt="Extrapolation results" style="max-width: 90%; height: auto;"/>
-        <p><em>Figure: Extrapolation of learned area-height relationship and resulting flow trajectories under unseen input.</em></p>
+        <p><em>Figure: Extrapolation of learned area-height relationship and resulting flow trajectories under unseen varying inflow through the manifold.</em></p>
       </div>
    <br>
 
