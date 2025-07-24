@@ -178,8 +178,14 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
       We propose a modular neural DAE learning framework that decomposes the DAE system into two components:
       a neural surrogate for the algebraic solver, and a physics-constrained (gray-box) neural ordinary differential equation (ODE) model.
       The algebraic states are updated using a trainable neural network, while the differential states evolve via an ODE solver applied to a structured ODE.
+      
+            <div class="has-text-centered">
+    <img src="./static/images/intro.png" alt="Neural DAE architecture" style="max-width: 80%; height: auto;" />
+    <p><em>Figure: Schematic of the proposed operator splitting-based DAE Timestepper.</em></p>
+  </div>
+
       The proposed operator splitting strategy is inspired by fractional-step numerical integration and is defined as:
-      <br><br>
+      <br>
       <div style="text-align: center;">
         $$
         \begin{aligned}
@@ -194,9 +200,10 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
       \( f: \mathbb{R}^{n_x} \times \mathbb{R}^{n_y} \times \mathbb{R}^{n_u} \rightarrow \mathbb{R}^{n_x} \) is a neural ODE model,
       and \(\text{ODESolve}\) denotes a numerical ODE solver (e.g., explicit Runge-Kutta).
 
-      <br><br>
+
+      <br>
       This architecture enables end-to-end training of neural DAEs with a constraint-aware loss function:
-      <br><br>
+      <br>
       <div style="text-align: center;">
         $$
         \mathcal{L}(\Theta) = \lambda_1 \mathcal{L}_{\text{residual}}(X, \hat{X}; \Theta)
