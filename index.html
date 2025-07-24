@@ -120,7 +120,7 @@
   <div class="container is-max-desktop">
 
     <div class="has-text-centered">
-    <img src="./static/images/intro.png" alt="Neural DAE architecture" style="max-width: 80%; height: auto;" />
+    <img src="./static/images/intro.png" alt="Neural DAE architecture" style="max-width: 60%; height: auto;" />
     <p><em>Figure: Schematic of the proposed operator splitting-based Neural Differential Algebraic Equation (DAE) Timestepper.</em></p>
   </div>
     <br>
@@ -232,12 +232,20 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
     <div class="content has-text-justified">
       Our  Neural DAE framework and all our examples are implemented using the <a href="https://github.com/pnnl/neuromancer" target="_blank">Neuromancer library</a>.
 
+      <br>
      Let's consider tank-manifold-pump system governed by differential-algebraic equations.
       The goal is to learn the nonlinear area-height profile of a tank, and the implicit flow splitting rule at a manifold junction,
       only from observed time series of tank heights and input flow rates.
+      
+      <br>
+    <a target="_blank" href="https://colab.research.google.com/github/pnnl/NeuralDAEs/blob/master/training/tank_dae_example.ipynb">
+      <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" style="height: 30px;"/>
+    </a>
+    <span>Try this example interactively in <strong>Google Colab</strong></span>
+    <br><br>
 
-      <br><br>
-      The full DAE system is given by:
+
+      In this example, the full DAE system is given by:
       <div style="text-align: center;">
         $$
         \begin{aligned}
