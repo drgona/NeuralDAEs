@@ -231,12 +231,12 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
     <h2 class="title is-3">Examples</h2>
     <div class="content has-text-justified">
       Our  Neural DAE framework and all our examples are implemented using the <a href="https://github.com/pnnl/neuromancer" target="_blank">Neuromancer library</a>.
-
+  <br>
       <br>
      Let's consider tank-manifold-pump system governed by differential-algebraic equations.
       The goal is to learn the nonlinear area-height profile of a tank, and the implicit flow splitting rule at a manifold junction,
       only from observed time series of tank heights and input flow rates.
-
+  <br>
       <br>
     <a target="_blank" href="https://colab.research.google.com/github/pnnl/NeuralDAEs/blob/master/training/tank_dae_example.ipynb">
       <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" style="height: 30px;"/>
@@ -285,6 +285,60 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
   </div>
 </div>
 <!--/ Examples -->
+
+
+    <!-- Conclusion -->
+<div class="columns">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Conclusion</h2>
+    <div class="content has-text-justified">
+      We presented a data-driven framework for learning Differential-Algebraic Equation (DAE) systems using a novel operator splitting strategy.
+      By alternating updates between a neural surrogate for algebraic states and a physics-informed ODE solver for differential dynamics,
+      the method enables consistent modeling of constrained systems directly from time-series data.
+      Our experiments show robustness to noise and extrapolation, with the ability to learn interpretable physical behaviors and interactions among system components.
+
+      <br><br>
+      <strong>Future research directions include:</strong>
+      <ul>
+        <li>Benchmarking against baseline methods such as neural ODEs and PINNs.</li>
+        <li>Adapting the framework for stiff or discontinuous dynamics via implicit solvers.</li>
+        <li>Extending to higher-index DAEs common in optimal control and system design.</li>
+        <li>Improving scalability and handling partial observability for large-scale systems.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--/ Conclusion -->
+
+
+
+<!-- Acknowledgment -->
+<div class="columns">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Acknowledgment</h2>
+    <div class="content has-text-justified">
+      This research was supported by the U.S. Department of Energy through the Building Technologies Office under the
+      <em>Advancing Market-Ready Building Energy Management by Cost-Effective Differentiable Predictive Control</em> projects.
+      Pacific Northwest National Laboratory (PNNL) is a multi-program national laboratory operated for the U.S. Department of Energy (DOE)
+      by Battelle Memorial Institute under Contract No. DE-AC05-76RL0-1830.
+
+      <div class="has-text-centered">
+        <img src="./static/images/PNNL_logo.jpg" alt="PNNL Logo" style="max-width: 500px; height: auto;"/>
+      </div>
+
+      <br>
+
+      This work was also supported by the Ralph O’Connor Sustainable Energy Institute (ROSEI) at Johns Hopkins University.
+
+      <div class="has-text-centered">
+        <img src="./static/images/JHU_logo.png" alt="JHU Logo" style="max-width: 500px; height: auto;"/>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/ Acknowledgment -->
+
+
 
 
 
