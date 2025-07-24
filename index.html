@@ -175,11 +175,37 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
       <div class="column is-full-width">
         <h2 class="title is-3">Method</h2>
         <div class="content has-text-justified">
-We propose a modular neural DAE learning framework that decomposes the DAE system into two operator-split components:
+We propose a modular neural DAE learning framework that decomposes the DAE system into two components:
           a neural surrogate for the algebraic solver and a physics-constrained (gray-box) neural ordinary differential equation model.
-          The algebraic states are updated using a trainable neural network, while the differential states evolve via an ODE solver (e.g., explicit Runge-Kutta) applied to a structured ODE.
-          This operator splitting strategy mirrors fractional-step numerical integration and is implemented using the <a href="https://github.com/pnnl/neuromancer" target="_blank">Neuromancer library</a>,
-          enabling end-to-end training with constraint-aware loss functions.
+          The algebraic states are updated using a trainable neural network, while the differential states evolve via an ODE solver applied to a structured ODE.
+          The proposed operator splitting strategy is inspired by fractional-step numerical integration and is defined as follows:
+          <br>
+          <div style="text-align: center;">
+        $$
+        \begin{aligned}
+            y^{(t+\Delta t)} & = h\left( x^{(t)},y^{(t)},u^{(t)} ; \theta_h\right), \\
+        x^{(t+\Delta t)} &= \text{ODESolve}\left(f ,\{x^{(t)},y^{(t+\Delta t)}, u^{(t)}\}; \theta_f\right),
+        \end{aligned}
+        $$
+      </div>
+          <br>
+      where \( h: \mathbb{R}^{n_x} \times \mathbb{R}^{n_y} \times \mathbb{R}^{n_u} \rightarrow \mathbb{R}^{n_y} \)
+          is a neural surrogate for the algebraic update,
+\( f: \mathbb{R}^{n_x} \times \mathbb{R}^{n_y} \times \mathbb{R}^{n_u} \rightarrow \mathbb{R}^{n_x} \) is a neural ODE model,
+          and \(\text{ODESolve}  \) represents an ODE solver (e.g., explicit Runge-Kutta).
+
+          This architecture is now enabling end-to-end training of neural DAEs with constraint-aware loss function:
+           <br>
+          <div style="text-align: center;">
+        $$
+        \begin{aligned}
+               \mathcal{L}(\Theta) = \lambda_1 \mathcal{L}_{\text{residual}}(X,\hat{X};\Theta) + \lambda_2 \mathcal{L}_{\text{constraints}}(X,\hat{X};\Theta),
+        \end{aligned}
+        $$
+      </div>
+          <br>
+            where \( \mathcal{L}_{\text{residual}} \) measures the residuals of the differential states, and \( \mathcal{L}_{\text{constraints}} \) quantifies the algebraic constraints.
+          Here \(X \) are modeled trajectories of differential and algebraic states, while \(\hat{X} \) represents the training dataset of observed trajectories.
 
         </div>
       </div>
@@ -197,6 +223,8 @@ We propose a modular neural DAE learning framework that decomposes the DAE syste
           Second, we consider model discrepancy learning in a network of pumps, pipes, and tanks with hybrid physical-learned structure.
           The proposed method shows strong performance in noisy conditions and exhibits good extrapolation to untrained operating regimes,
           highlighting its utility for learning hybrid physics-based models in scientific domains.
+          All our examples are implemented using the <a href="https://github.com/pnnl/neuromancer" target="_blank">Neuromancer library</a>.
+
 
         </div>
       </div>
