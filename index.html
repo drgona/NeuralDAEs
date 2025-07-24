@@ -26,6 +26,14 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+<!--  to support latex -->
+  <script type="text/javascript"
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
 </head>
 <body>
 
@@ -131,19 +139,32 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
 
 
 
-          <!-- Problem Formulation -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Problem Formulation</h2>
-        <div class="content has-text-justified">
-Differential-Algebraic Equations (DAEs) model dynamical systems governed by both differential dynamics and algebraic constraints—common in physical domains with conservation laws or implicit relationships.
-          Traditional neural ODE models fail to capture these algebraic structures, motivating the need for neural architectures that can learn both explicit and implicit dynamics.
-          The goal is to develop a data-driven framework for learning unknown or partially known DAE components from time-series data while maintaining consistency with the system’s inherent physical constraints.
+<!-- Problem Formulation -->
+<div class="columns is-centered">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Problem Formulation</h2>
+    <div class="content has-text-justified">
+      Differential-Algebraic Equations (DAEs) model dynamical systems governed by both differential dynamics and algebraic constraints—common in physical domains with conservation laws or implicit relationships.
+      Traditional neural ODE models fail to capture these algebraic structures, motivating the need for neural architectures that can learn both explicit and implicit dynamics.
+      The goal is to develop a data-driven framework for learning unknown or partially known DAE components from time-series data while maintaining consistency with the system’s inherent physical constraints.
 
-        </div>
+      <br><br>
+      We formulate the problem as learning two mappings \( f_\theta \) and \( g_\phi \) that represent the differential and algebraic components of the DAE system:
+      <br><br>
+      <div style="text-align: center;">
+        $$
+        \begin{aligned}
+        \frac{dx}{dt} &= f_\theta(x(t), z(t), u(t)), \\\\
+        z(t) &= g_\phi(x(t), u(t)),
+        \end{aligned}
+        $$
       </div>
+      <br>
+      where \( x(t) \in \mathbb{R}^{n_x} \) are the differential states, \( z(t) \in \mathbb{R}^{n_z} \) are algebraic states, and \( u(t) \in \mathbb{R}^{n_u} \) are known inputs.
     </div>
-    <!--/ Problem Formulation -->
+  </div>
+</div>
+<!--/ Problem Formulation -->
 
 
       <!-- Method -->
@@ -154,7 +175,7 @@ Differential-Algebraic Equations (DAEs) model dynamical systems governed by both
 We propose a modular neural DAE learning framework that decomposes the DAE system into two operator-split components:
           a neural surrogate for the algebraic solver and a physics-constrained (gray-box) neural ordinary differential equation model.
           The algebraic states are updated using a trainable neural network, while the differential states evolve via an ODE solver (e.g., explicit Runge-Kutta) applied to a structured ODE.
-          This operator splitting strategy mirrors fractional-step numerical integration and is implemented using the Neuromancer Scientific Machine Learning library,
+          This operator splitting strategy mirrors fractional-step numerical integration and is implemented using the <a href="https://github.com/pnnl/neuromancer" target="_blank">Neuromancer library</a>,
           enabling end-to-end training with constraint-aware loss functions.
 
         </div>
@@ -163,7 +184,7 @@ We propose a modular neural DAE learning framework that decomposes the DAE syste
     <!--/ Method -->
 
 
-      <!-- Method -->
+      <!-- Examples -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Examples</h2>
@@ -177,7 +198,10 @@ We propose a modular neural DAE learning framework that decomposes the DAE syste
         </div>
       </div>
     </div>
-    <!--/ Method -->
+    <!--/ Examples -->
+
+
+
 
     </div>
   </div>
