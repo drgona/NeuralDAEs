@@ -37,13 +37,17 @@
 </head>
 <body>
 
+<!-- home button at the top-->
 <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://drgona.github.io/">
+        <span class="icon">
+          <i class="fas fa-home"></i>
+        </span>
+        <span>Home</span>
+      </a>
+    </div>
   </div>
 </nav>
 
@@ -120,7 +124,7 @@
   <div class="container is-max-desktop">
 
 
-    <div class="has-text-centered" style="margin-top: -1.5rem;">
+    <div class="has-text-centered" style="margin-top: -2.0rem;">
   <img src="./static/images/intro.png" alt="Neural DAE architecture" style="max-width: 60%; height: auto;" />
   <p><em>Figure: Schematic of the proposed operator splitting-based Neural Differential Algebraic Equation (DAE) Timestepper.</em></p>
 </div>
@@ -234,7 +238,7 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
       Our  Neural DAE framework and all our examples are implemented using the <a href="https://github.com/pnnl/neuromancer" target="_blank">Neuromancer library</a>.
   <br>
       <br>
-     Let's consider tank-manifold-pump system governed by differential-algebraic equations.
+     Let's consider <strong>tank-manifold-pump system</strong> governed by differential-algebraic equations.
       The goal is to learn the nonlinear area-height profile of a tank, and the implicit flow splitting rule at a manifold junction,
       only from observed time series of tank heights and input flow rates.
   <br>
@@ -304,7 +308,7 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
         <li>Benchmarking against baseline methods such as neural ODEs and PINNs.</li>
         <li>Adapting the framework for stiff or discontinuous dynamics via implicit solvers.</li>
         <li>Extending to higher-index DAEs common in optimal control and system design.</li>
-        <li>Improving scalability and handling partial observability for large-scale systems.</li>
+        <li>Handling of partial observability for large-scale systems.</li>
       </ul>
     </div>
   </div>
