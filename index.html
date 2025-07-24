@@ -149,7 +149,7 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
       The goal is to develop a data-driven framework for learning unknown or partially known DAE components from time-series data while maintaining consistency with the system’s inherent physical constraints.
 
       <br><br>
-      We formulate the problem as learning two mappings \( f_\theta \) and \( g_\phi \) that represent the differential and algebraic components of the DAE system:
+      We formulate the problem as learning two mappings \( f_\theta \) and \( g_\phi \) that represent the differential and algebraic components of the DAE system in the following parameter estimation problem:
       <br><br>
       <div style="text-align: center;">
         $$
@@ -163,7 +163,7 @@ Differential algebraic equations (DAEs) describe the temporal evolution of syste
         $$
       </div>
       <br>
-      where \( x(t) \in \mathbb{R}^{n_x} \) are the differential states, \( z(t) \in \mathbb{R}^{n_z} \) are algebraic states, and \( u(t) \in \mathbb{R}^{n_u} \) are known inputs.
+      where \( x(t) \in \mathbb{R}^{n_x} \) are the differential states, \( y(t) \in \mathbb{R}^{n_z} \) are algebraic states, and \( u(t) \in \mathbb{R}^{n_u} \) are known inputs, and \( \theta_f \) are unknown parameters we want to train.
     </div>
   </div>
 </div>
